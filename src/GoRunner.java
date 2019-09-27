@@ -1,7 +1,9 @@
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -9,6 +11,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -32,6 +35,28 @@ public class GoRunner extends Application
 		turnIndicator.setCenterX(670);
 		turnIndicator.setCenterY(270);
 		mainPane.getChildren().add(turnIndicator);
+		
+		Button passButton = new Button("Pass"), resignButton = new Button("Resign");
+		passButton.setOnAction(e ->
+		{
+			if (turnIndicator.getFill() == Color.WHITE)
+			{
+				turnIndicator.setFill(Color.BLACK);
+			}
+			else
+			{
+				turnIndicator.setFill(Color.WHITE);
+			}
+		});
+		
+		FlowPane buttons = new FlowPane(Orientation.VERTICAL, passButton, resignButton);
+		
+		passButton.setPrefSize(90, 55);
+		resignButton.setPrefSize(90, 55);
+		buttons.setLayoutX(555);
+		buttons.setLayoutY(460);
+		buttons.setHgap(80);
+		mainPane.getChildren().add(buttons);
 		
 		stage.setScene(new Scene(mainPane, 850, 550));
 		stage.setResizable(false);
