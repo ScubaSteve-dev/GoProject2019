@@ -18,15 +18,17 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class GoRunner extends Application
 {
+	private static ArrayList<ImageView> intersects;
 	
 	@Override
 	public void start(Stage stage) throws Exception
 	{
 		BorderPane mainPane = new BorderPane();
-		mainPane.setBackground(
-				new Background(new BackgroundFill(Color.rgb(25, 255, 56), CornerRadii.EMPTY, Insets.EMPTY)));
+		mainPane.setBackground(new Background(new BackgroundFill(Color.rgb(25, 255, 56), CornerRadii.EMPTY, Insets.EMPTY)));
 		
 		drawBoard(mainPane);
 		drawPlayerInfo(mainPane);
@@ -42,8 +44,7 @@ public class GoRunner extends Application
 			if (turnIndicator.getFill() == Color.WHITE)
 			{
 				turnIndicator.setFill(Color.BLACK);
-			}
-			else
+			} else
 			{
 				turnIndicator.setFill(Color.WHITE);
 			}
@@ -66,6 +67,7 @@ public class GoRunner extends Application
 	
 	private static void drawBoard(BorderPane mainPane)
 	{
+		intersects = new ArrayList<>();
 		GridPane board = new GridPane();
 		for (int x = 0; x < 19; x++)
 		{
@@ -74,11 +76,11 @@ public class GoRunner extends Application
 			{
 				boolean isTop = y == 0, isBottom = y == 18;
 				ImageView imageView = getImage(isTop, isBottom, isLeft, isRight);
+				intersects.add(imageView);
 				final int tempX = x, tempY = y;
 				imageView.setOnMouseClicked(e ->
 				{
-					Alert alert = new Alert(Alert.AlertType.INFORMATION, "X:" + tempX + " Y:" + tempY,
-							ButtonType.CANCEL);
+					Alert alert = new Alert(Alert.AlertType.INFORMATION, "X:" + tempX + " Y:" + tempY, ButtonType.CANCEL);
 					alert.showAndWait();
 				});
 				board.setPadding(new Insets(25.0));
@@ -131,47 +133,39 @@ public class GoRunner extends Application
 			if (isLeft)
 			{
 				temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("corner.png")));
-			}
-			else if (isRight)
+			} else if (isRight)
 			{
 				temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("corner.png")));
 				temp.setRotate(90);
-			}
-			else
+			} else
 			{
 				temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("side.png")));
 				
 			}
-		}
-		else if (isBottom)
+		} else if (isBottom)
 		{
 			if (isLeft)
 			{
 				temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("corner.png")));
 				temp.setRotate(-90);
-			}
-			else if (isRight)
+			} else if (isRight)
 			{
 				temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("corner.png")));
 				temp.setRotate(180);
-			}
-			else
+			} else
 			{
 				temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("side.png")));
 				temp.setRotate(180);
 			}
-		}
-		else if (isLeft)
+		} else if (isLeft)
 		{
 			temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("side.png")));
 			temp.setRotate(-90);
-		}
-		else if (isRight)
+		} else if (isRight)
 		{
 			temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("side.png")));
 			temp.setRotate(90);
-		}
-		else
+		} else
 		{
 			temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("cross.png")));
 		}
