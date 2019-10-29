@@ -1,3 +1,6 @@
+
+//Class implemented by John Comeaux
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
@@ -20,7 +23,7 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-public class MainUI extends Application
+public class GameBoardUI extends Application
 {
 	private static ArrayList<ImageView> intersects;
 	
@@ -135,16 +138,16 @@ public class MainUI extends Application
 		{
 			if (isLeft)
 			{
-				temp = new ImageView(new Image(MainUI.class.getResourceAsStream("corner.png")));
+				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("corner.png")));
 			}
 			else if (isRight)
 			{
-				temp = new ImageView(new Image(MainUI.class.getResourceAsStream("corner.png")));
+				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("corner.png")));
 				temp.setRotate(90);
 			}
 			else
 			{
-				temp = new ImageView(new Image(MainUI.class.getResourceAsStream("side.png")));
+				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("side.png")));
 				
 			}
 		}
@@ -152,33 +155,33 @@ public class MainUI extends Application
 		{
 			if (isLeft)
 			{
-				temp = new ImageView(new Image(MainUI.class.getResourceAsStream("corner.png")));
+				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("corner.png")));
 				temp.setRotate(-90);
 			}
 			else if (isRight)
 			{
-				temp = new ImageView(new Image(MainUI.class.getResourceAsStream("corner.png")));
+				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("corner.png")));
 				temp.setRotate(180);
 			}
 			else
 			{
-				temp = new ImageView(new Image(MainUI.class.getResourceAsStream("side.png")));
+				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("side.png")));
 				temp.setRotate(180);
 			}
 		}
 		else if (isLeft)
 		{
-			temp = new ImageView(new Image(MainUI.class.getResourceAsStream("side.png")));
+			temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("side.png")));
 			temp.setRotate(-90);
 		}
 		else if (isRight)
 		{
-			temp = new ImageView(new Image(MainUI.class.getResourceAsStream("side.png")));
+			temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("side.png")));
 			temp.setRotate(90);
 		}
 		else
 		{
-			temp = new ImageView(new Image(MainUI.class.getResourceAsStream("cross.png")));
+			temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("cross.png")));
 		}
 		return temp;
 	}
