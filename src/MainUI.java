@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-public class GoRunner extends Application
+public class MainUI extends Application
 {
 	private static ArrayList<ImageView> intersects;
 	
@@ -28,7 +28,8 @@ public class GoRunner extends Application
 	public void start(Stage stage) throws Exception
 	{
 		BorderPane mainPane = new BorderPane();
-		mainPane.setBackground(new Background(new BackgroundFill(Color.rgb(25, 255, 56), CornerRadii.EMPTY, Insets.EMPTY)));
+		mainPane.setBackground(
+				new Background(new BackgroundFill(Color.rgb(25, 255, 56), CornerRadii.EMPTY, Insets.EMPTY)));
 		
 		drawBoard(mainPane);
 		drawPlayerInfo(mainPane);
@@ -44,7 +45,8 @@ public class GoRunner extends Application
 			if (turnIndicator.getFill() == Color.WHITE)
 			{
 				turnIndicator.setFill(Color.BLACK);
-			} else
+			}
+			else
 			{
 				turnIndicator.setFill(Color.WHITE);
 			}
@@ -80,7 +82,8 @@ public class GoRunner extends Application
 				final int tempX = x, tempY = y;
 				imageView.setOnMouseClicked(e ->
 				{
-					Alert alert = new Alert(Alert.AlertType.INFORMATION, "X:" + tempX + " Y:" + tempY, ButtonType.CANCEL);
+					Alert alert = new Alert(Alert.AlertType.INFORMATION, "X:" + tempX + " Y:" + tempY,
+							ButtonType.CANCEL);
 					alert.showAndWait();
 				});
 				board.setPadding(new Insets(25.0));
@@ -99,7 +102,7 @@ public class GoRunner extends Application
 			blackPlayerName.setLayoutX(555);
 			blackPlayerName.setLayoutY(55);
 			
-			blackPlayerPieces.setFill(Color.GREY);
+			blackPlayerPieces.setFill(Color.WHITE);
 			blackPlayerPieces.setLayoutX(570);
 			blackPlayerPieces.setLayoutY(90);
 			
@@ -114,7 +117,7 @@ public class GoRunner extends Application
 			whitePlayerName.setLayoutX(725);
 			whitePlayerName.setLayoutY(55);
 			
-			whitePlayerPieces.setFill(Color.GREY);
+			whitePlayerPieces.setFill(Color.BLACK);
 			whitePlayerPieces.setLayoutX(740);
 			whitePlayerPieces.setLayoutY(90);
 			
@@ -132,42 +135,50 @@ public class GoRunner extends Application
 		{
 			if (isLeft)
 			{
-				temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("corner.png")));
-			} else if (isRight)
+				temp = new ImageView(new Image(MainUI.class.getResourceAsStream("corner.png")));
+			}
+			else if (isRight)
 			{
-				temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("corner.png")));
+				temp = new ImageView(new Image(MainUI.class.getResourceAsStream("corner.png")));
 				temp.setRotate(90);
-			} else
+			}
+			else
 			{
-				temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("side.png")));
+				temp = new ImageView(new Image(MainUI.class.getResourceAsStream("side.png")));
 				
 			}
-		} else if (isBottom)
+		}
+		else if (isBottom)
 		{
 			if (isLeft)
 			{
-				temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("corner.png")));
+				temp = new ImageView(new Image(MainUI.class.getResourceAsStream("corner.png")));
 				temp.setRotate(-90);
-			} else if (isRight)
+			}
+			else if (isRight)
 			{
-				temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("corner.png")));
-				temp.setRotate(180);
-			} else
-			{
-				temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("side.png")));
+				temp = new ImageView(new Image(MainUI.class.getResourceAsStream("corner.png")));
 				temp.setRotate(180);
 			}
-		} else if (isLeft)
+			else
+			{
+				temp = new ImageView(new Image(MainUI.class.getResourceAsStream("side.png")));
+				temp.setRotate(180);
+			}
+		}
+		else if (isLeft)
 		{
-			temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("side.png")));
+			temp = new ImageView(new Image(MainUI.class.getResourceAsStream("side.png")));
 			temp.setRotate(-90);
-		} else if (isRight)
+		}
+		else if (isRight)
 		{
-			temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("side.png")));
+			temp = new ImageView(new Image(MainUI.class.getResourceAsStream("side.png")));
 			temp.setRotate(90);
-		} else
+		}
+		else
 		{
-			temp = new ImageView(new Image(GoRunner.class.getResourceAsStream("cross.png")));
+			temp = new ImageView(new Image(MainUI.class.getResourceAsStream("cross.png")));
 		}
 		return temp;
 	}
