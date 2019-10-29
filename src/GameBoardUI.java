@@ -64,10 +64,17 @@ public class GameBoardUI extends Application
 		buttons.setHgap(80);
 		mainPane.getChildren().add(buttons);
 		
+		Game g = new Game(this);
+		
 		stage.setScene(new Scene(mainPane, 850, 550));
 		stage.setResizable(false);
 		stage.setTitle("GO Game in Progress");
 		stage.show();
+	}
+	
+	public void updateBoard(char[][] b)
+	{
+		
 	}
 	
 	private static void drawBoard(BorderPane mainPane)
