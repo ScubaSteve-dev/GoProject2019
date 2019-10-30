@@ -29,16 +29,27 @@ public class Game
 		
 		
 	}
-	public void run() {
-	
-		Player toMove = black;
-		int skip= NumberPasses;
-	
-		while (skip<2) {
-			skip= toMove.move() ? 0 : skip + 1;
+		public void play() {
+			
+			Player toMove  = black;
+			int skip= NumberPasses;
+		
+			while (skip<2) {
+				skip= toMove.move() ? 0 : skip + 1;
+				toMove = toMove== black ? white : black;
+		}
 	}
-	
+
+		public void pass() {
+			int skip= NumberPasses;
+			int toSkip  = skip;
+		
+			while (skip<2) {
+				skip = extracted(skip, toSkip);
+		}
 	}
-	
-	
+
+		private int extracted(int skip, int toSkip) {
+			return skip;
+		}
 }
