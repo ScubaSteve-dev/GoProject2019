@@ -4,7 +4,9 @@ public class Scoring{
 
     public void calculateScore(char[][] currentBoard){
         for(char[] c:currentBoard ){
-
+            if(c.equals(' ')){
+                System.out.println("Blank");
+            }
         }
     }
 
