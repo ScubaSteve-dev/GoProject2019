@@ -4,7 +4,7 @@ public class Game
 	public Player black, white;
 	public long TimeLimit;
 	public static boolean GameOver, BlackPlayerTurn, playerResigned;
-	public int NumberPasses = 0;
+	public static int NumberPasses = 0;
 	public Board board;
 	public GameBoardUI BoardWindow;
 	
