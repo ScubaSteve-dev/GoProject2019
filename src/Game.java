@@ -34,7 +34,8 @@ public class Game
 								break;
 							}
 							board.makeMove(Integer.parseInt(choice.substring(0, choice.indexOf(' '))),
-									Integer.parseInt(choice.substring(choice.indexOf(' ') + 1)), BlackPlayerTurn);
+									Integer.parseInt(choice.substring(choice.indexOf(' ') + 1)), false,
+									BlackPlayerTurn);
 							white.piecesLeft--;
 							NumberPasses = 0;
 					}
@@ -67,7 +68,8 @@ public class Game
 								break;
 							}
 							board.makeMove(Integer.parseInt(choice.substring(0, choice.indexOf(' '))),
-									Integer.parseInt(choice.substring(choice.indexOf(' ') + 1)), BlackPlayerTurn);
+									Integer.parseInt(choice.substring(choice.indexOf(' ') + 1)), false,
+									BlackPlayerTurn);
 							white.piecesLeft--;
 							NumberPasses = 0;
 					}
