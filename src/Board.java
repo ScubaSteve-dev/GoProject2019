@@ -24,13 +24,13 @@ public class Board
 	}
 	
 	// To be implemented
-	public void makeMove(int x, int y, boolean blackPlayerTurn)
+	public static void makeMove(int x, int y, boolean isAi,boolean blackPlayerTurn)
 	{
 		
 	}
 	
 	// To be implemented
-	public boolean validMove(int x, int y, boolean blackPlayerTurn)
+	public static boolean validMove(int x, int y, boolean blackPlayerTurn)
 	{
 		// TODO
 		return true;
