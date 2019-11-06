@@ -27,6 +27,7 @@ public class GameBoardUI extends Application
 	private static ArrayList<ImageView> intersects;
 	public static boolean passClicked, resignClicked;
 	public static Point newMove;
+	private static Circle turnIndicator;
 	
 	@Override
 	public void start(Stage stage) throws Exception
@@ -38,7 +39,7 @@ public class GameBoardUI extends Application
 		drawBoard(mainPane);
 		drawPlayerInfo(mainPane);
 		
-		Circle turnIndicator = new Circle(80, Color.BLACK);
+		turnIndicator = new Circle(80, Color.BLACK);
 		turnIndicator.setCenterX(670);
 		turnIndicator.setCenterY(270);
 		mainPane.getChildren().add(turnIndicator);
@@ -47,11 +48,6 @@ public class GameBoardUI extends Application
 		passButton.setOnAction(e ->
 		{
 			passClicked = true;
-			/*
-			 * if (turnIndicator.getFill() == Color.WHITE) {
-			 * turnIndicator.setFill(Color.BLACK); } else {
-			 * turnIndicator.setFill(Color.WHITE); }
-			 */
 		});
 		resignButton.setOnAction(e ->
 		{
@@ -77,6 +73,11 @@ public class GameBoardUI extends Application
 			}
 		};
 		
+		stage.setOnCloseRequest(e ->
+		{
+			Game.GameOver = true;
+			System.out.println("Start window close.");
+		});
 		stage.setScene(new Scene(mainPane, 850, 550));
 		stage.setResizable(false);
 		stage.setTitle("GO Game in Progress");
@@ -86,6 +87,15 @@ public class GameBoardUI extends Application
 	
 	public void updateBoard(char[][] b)
 	{
+		
+		if (turnIndicator.getFill() == Color.WHITE)
+		{
+			turnIndicator.setFill(Color.BLACK);
+		}
+		else
+		{
+			turnIndicator.setFill(Color.WHITE);
+		}
 		
 	}
 	

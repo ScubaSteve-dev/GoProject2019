@@ -3,7 +3,7 @@ public class Game
 {
 	public Player black, white;
 	public long TimeLimit;
-	public boolean GameOver, BlackPlayerTurn, playerResigned;
+	public static boolean GameOver, BlackPlayerTurn, playerResigned;
 	public int NumberPasses = 0;
 	public Board board;
 	public GameBoardUI BoardWindow;
@@ -24,6 +24,7 @@ public class Game
 							NumberPasses++;
 							break;
 						case "Resign":
+							System.out.println("Someone resigned");
 							GameOver = true;
 							break;
 						default:
@@ -36,6 +37,11 @@ public class Game
 									Integer.parseInt(choice.substring(choice.indexOf(' ') + 1)), BlackPlayerTurn);
 							white.piecesLeft--;
 							NumberPasses = 0;
+					}
+					if (GameOver)
+					{
+						validFound = true;
+						System.out.println("Game ended somehow.");
 					}
 				}
 			}
@@ -51,6 +57,7 @@ public class Game
 							NumberPasses++;
 							break;
 						case "Resign":
+							System.out.println("Someone resigned");
 							GameOver = true;
 							break;
 						default:
@@ -63,6 +70,11 @@ public class Game
 									Integer.parseInt(choice.substring(choice.indexOf(' ') + 1)), BlackPlayerTurn);
 							white.piecesLeft--;
 							NumberPasses = 0;
+					}
+					if (GameOver)
+					{
+						validFound = true;
+						System.out.println("Game ended somehow.");
 					}
 				}
 			}

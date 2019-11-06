@@ -14,6 +14,18 @@ public class Player
 	{
 		while (GameBoardUI.newMove == null && !GameBoardUI.passClicked && !GameBoardUI.resignClicked)
 		{
+			try
+			{
+				Thread.sleep(10);
+			}
+			catch (Exception e)
+			{
+			}
+			if (Game.GameOver)
+			{
+				System.out.println("Window Closed");
+				return "Resign";
+			}
 		}
 		if (GameBoardUI.passClicked)
 		{

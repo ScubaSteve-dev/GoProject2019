@@ -23,6 +23,7 @@ public class Board
 		pastBoards.add(currentBoard);
 	}
 	
+	// To be implemented
 	public void makeMove(int x, int y, boolean blackPlayerTurn)
 	{
 		
@@ -35,6 +36,7 @@ public class Board
 		return true;
 	}
 	
+	// To be implemented
 	public void score(boolean playerResigned, boolean blackPlayerTurn)
 	{
 		if (playerResigned)
