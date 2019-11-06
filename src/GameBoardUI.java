@@ -5,9 +5,7 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -21,11 +19,14 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
 public class GameBoardUI extends Application
 {
 	private static ArrayList<ImageView> intersects;
+	public static boolean passClicked, resignClicked;
+	public static Point newMove;
 	
 	@Override
 	public void start(Stage stage) throws Exception
@@ -45,14 +46,16 @@ public class GameBoardUI extends Application
 		Button passButton = new Button("Pass"), resignButton = new Button("Resign");
 		passButton.setOnAction(e ->
 		{
-			if (turnIndicator.getFill() == Color.WHITE)
-			{
-				turnIndicator.setFill(Color.BLACK);
-			}
-			else
-			{
-				turnIndicator.setFill(Color.WHITE);
-			}
+			passClicked = true;
+			/*
+			 * if (turnIndicator.getFill() == Color.WHITE) {
+			 * turnIndicator.setFill(Color.BLACK); } else {
+			 * turnIndicator.setFill(Color.WHITE); }
+			 */
+		});
+		resignButton.setOnAction(e ->
+		{
+			resignClicked = true;
 		});
 		
 		FlowPane buttons = new FlowPane(Orientation.VERTICAL, passButton, resignButton);
@@ -65,11 +68,20 @@ public class GameBoardUI extends Application
 		mainPane.getChildren().add(buttons);
 		
 		Game g = new Game(this);
+		Thread gameThread = new Thread()
+		{
+			@Override
+			public void run()
+			{
+				g.Start();
+			}
+		};
 		
 		stage.setScene(new Scene(mainPane, 850, 550));
 		stage.setResizable(false);
 		stage.setTitle("GO Game in Progress");
 		stage.show();
+		gameThread.start();
 	}
 	
 	public void updateBoard(char[][] b)
@@ -92,9 +104,11 @@ public class GameBoardUI extends Application
 				final int tempX = x, tempY = y;
 				imageView.setOnMouseClicked(e ->
 				{
-					Alert alert = new Alert(Alert.AlertType.INFORMATION, "X:" + tempX + " Y:" + tempY,
-							ButtonType.CANCEL);
-					alert.showAndWait();
+					newMove = new Point(tempX, tempY);
+					// Alert alert = new Alert(Alert.AlertType.INFORMATION, "X:" + tempX + " Y:" +
+					// tempY,
+					// ButtonType.CANCEL);
+					// alert.showAndWait();
 				});
 				board.setPadding(new Insets(25.0));
 				board.add(imageView, x, y);

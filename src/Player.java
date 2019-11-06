@@ -9,12 +9,27 @@ public class Player
 		playerName = "Player";
 		piecesLeft = 181;
 	}
-<<<<<<< HEAD
-
-	public boolean move() {
-		// TODO Auto-generated method stub
-		return false;
+	
+	public String move()
+	{
+		while (GameBoardUI.newMove == null && !GameBoardUI.passClicked && !GameBoardUI.resignClicked)
+		{
+		}
+		if (GameBoardUI.passClicked)
+		{
+			GameBoardUI.passClicked = false;
+			return "Pass";
+		}
+		else if (GameBoardUI.resignClicked)
+		{
+			GameBoardUI.resignClicked = false;
+			return "Resign";
+		}
+		else
+		{
+			String temp = GameBoardUI.newMove.x + " " + GameBoardUI.newMove.y;
+			GameBoardUI.newMove = null;
+			return temp;
+		}
 	}
-=======
->>>>>>> branch 'master' of https://www.github.com/beyjohn/GoProject2019
 }

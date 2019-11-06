@@ -23,10 +23,24 @@ public class Board
 		pastBoards.add(currentBoard);
 	}
 	
+	public void makeMove(int x, int y, boolean blackPlayerTurn)
+	{
+		
+	}
+	
 	// To be implemented
 	public boolean validMove(int x, int y, boolean blackPlayerTurn)
 	{
 		// TODO
 		return true;
+	}
+	
+	public void score(boolean playerResigned, boolean blackPlayerTurn)
+	{
+		if (playerResigned)
+		{
+			System.out.println((blackPlayerTurn ? black.playerName : white.playerName) + " resigned");
+		}
+		// TODO
 	}
 }
