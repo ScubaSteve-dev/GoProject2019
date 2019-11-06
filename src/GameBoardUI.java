@@ -73,6 +73,25 @@ public class GameBoardUI extends Application
 				g.Start();
 			}
 		};
+		Thread timer = new Thread()
+		{
+			@Override
+			public void run()
+			{
+				long seconds = 180;
+				try
+				{
+					Thread.sleep(seconds * 1000);
+				}
+				catch (Exception e)
+				{
+					
+				}
+				Game.NumberPasses = 1;
+				passClicked = true;
+			}
+		};
+		timer.start();
 		
 		stage.setOnCloseRequest(e ->
 		{
