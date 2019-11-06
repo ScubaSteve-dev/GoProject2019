@@ -201,19 +201,19 @@ public class GameBoardUI extends Application
 			if (isLeft)
 			{
 				temp = GameBoardUI.class.getResourceAsStream("Corner"
-						+ (piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
+						+ (piece==' '?"":piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 						+ ".png");
 			}
 			else if (isRight)
 			{
 				temp = GameBoardUI.class.getResourceAsStream("Corner"
-						+ (piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
+						+ (piece==' '?"":piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 						+ ".png");
 			}
 			else
 			{
 				temp = GameBoardUI.class.getResourceAsStream("Side"
-						+ (piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
+						+ (piece==' '?"":piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 						+ ".png");
 				
 			}
@@ -223,38 +223,38 @@ public class GameBoardUI extends Application
 			if (isLeft)
 			{
 				temp = GameBoardUI.class.getResourceAsStream("Corner"
-						+ (piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
+						+ (piece==' '?"":piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 						+ ".png");
 			}
 			else if (isRight)
 			{
 				temp = GameBoardUI.class.getResourceAsStream("Corner"
-						+ (piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
+						+ (piece==' '?"":piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 						+ ".png");
 			}
 			else
 			{
 				temp = GameBoardUI.class.getResourceAsStream("Side"
-						+ (piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
+						+ (piece==' '?"":piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 						+ ".png");
 			}
 		}
 		else if (isLeft)
 		{
 			temp = GameBoardUI.class.getResourceAsStream("Side"
-					+ (piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
+					+ (piece==' '?"":piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 					+ ".png");
 		}
 		else if (isRight)
 		{
 			temp = GameBoardUI.class.getResourceAsStream("Side"
-					+ (piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
+					+ (piece==' '?"":piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 					+ ".png");
 		}
 		else
 		{
 			temp = GameBoardUI.class.getResourceAsStream("Cross"
-					+ (piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
+					+ (piece==' '?"":piece == 'B' ? "Black" : piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 					+ ".png");
 		}
 		return temp;
