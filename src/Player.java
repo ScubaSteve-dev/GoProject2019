@@ -16,14 +16,14 @@ public class Player
 		{
 			try
 			{
-				Thread.sleep(10);
+				Thread.sleep(10); // Necessary so the thread will terminate without input
 			}
 			catch (Exception e)
 			{
 			}
 			if (Game.GameOver)
 			{
-				System.out.println("Window Closed");
+				// System.out.println("Window Closed");
 				return "Resign";
 			}
 		}

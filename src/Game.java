@@ -24,7 +24,7 @@ public class Game
 							NumberPasses++;
 							break;
 						case "Resign":
-							System.out.println("Someone resigned");
+							// System.out.println("Someone resigned");
 							GameOver = true;
 							break;
 						default:
@@ -41,7 +41,7 @@ public class Game
 					if (GameOver)
 					{
 						validFound = true;
-						System.out.println("Game ended somehow.");
+						// System.out.println("Game ended somehow.");
 					}
 				}
 			}
@@ -57,7 +57,7 @@ public class Game
 							NumberPasses++;
 							break;
 						case "Resign":
-							System.out.println("Someone resigned");
+							// System.out.println("Someone resigned");
 							GameOver = true;
 							break;
 						default:
@@ -74,7 +74,7 @@ public class Game
 					if (GameOver)
 					{
 						validFound = true;
-						System.out.println("Game ended somehow.");
+						// System.out.println("Game ended somehow.");
 					}
 				}
 			}
