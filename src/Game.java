@@ -1,3 +1,4 @@
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
@@ -96,9 +97,13 @@ public class Game
 			}
 		}
 		double[] scores = board.score(playerResigned, !BlackPlayerTurn);
-		Alert alert = new Alert(Alert.AlertType.INFORMATION, "Black Score: " + scores[0] + " White Score: " + scores[1],
-				ButtonType.CANCEL);
-		alert.showAndWait();
+		
+		Platform.runLater(() ->
+		{
+			Alert scoreAlert = new Alert(Alert.AlertType.INFORMATION,
+					"Black Score: " + scores[0] + " White Score: " + scores[1], ButtonType.CANCEL);
+			scoreAlert.showAndWait();
+		});
 	}
 	
 	public Game(GameBoardUI B)
