@@ -42,8 +42,8 @@ public class Board
 			System.out.println((blackPlayerTurn ? black.playerName : white.playerName) + " resigned");
 			Scoring scoring=new Scoring();
 			scoring.calculateScore(currentBoard);
-			System.out.println(black.playerName + ":"+scoring.scoreBlack);
-			System.out.println(white.playerName + ":"+scoring.scoreWhite);
+			System.out.println(black.playerName + ":"+scoring.getScoreBlack());
+			System.out.println(white.playerName + ":"+scoring.getScoreWhite());
 		}
 		// TODO
 	}
