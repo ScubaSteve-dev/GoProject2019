@@ -1,3 +1,5 @@
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 public class Game
 {
@@ -93,7 +95,10 @@ public class Game
 				GameOver = true;
 			}
 		}
-		board.score(playerResigned, !BlackPlayerTurn);
+		double[] scores = board.score(playerResigned, !BlackPlayerTurn);
+		Alert alert = new Alert(Alert.AlertType.INFORMATION, "Black Score: " + scores[0] + " White Score: " + scores[1],
+				ButtonType.CANCEL);
+		alert.showAndWait();
 	}
 	
 	public Game(GameBoardUI B)

@@ -35,17 +35,30 @@ public class Board
 	}
 	
 	// To be implemented
-	public void score(boolean playerResigned, boolean blackPlayerTurn)
+	public double[] score(boolean playerResigned, boolean blackPlayerTurn)
 	{
 		if (playerResigned)
 		{
 			System.out.println((blackPlayerTurn ? black.playerName : white.playerName) + " resigned");
-			Scoring scoring=new Scoring();
-			scoring.calculateScore(currentBoard);
-			System.out.println(black.playerName + ":"+scoring.getScoreBlack());
-			System.out.println(white.playerName + ":"+scoring.getScoreWhite());
+			return new double[] { 1.0, 0.0 };
 		}
 		// TODO
+		double[] scores = new double[2];
+		for (char t[] : currentBoard)
+		{
+			for (char h : t)
+			{
+				if (h == 'B')
+				{
+					scores[0] += 1;
+				}
+				else if (h == 'W')
+				{
+					scores[1] += 1;
+				}
+			}
+		}
+		return scores;
 	}
 	
 	// Zack stuff. Shhhhhhhhhhhhhhhhh it's okay john, shhhhhhhhhhhhhhhh. don't look
@@ -67,7 +80,7 @@ public class Board
 			check = 'W';
 		}
 		// check if board position is empty
-		if (currentBoard[y][x] == ' ')
+		if (currentBoard[x][y] == ' ')
 		{
 			traversedPoints.add(new Point(x, y));
 			int right = right(y, x, check);
@@ -105,7 +118,7 @@ public class Board
 	{
 		Point currentPoint = new Point(x, y);
 		traversedPoints.add(currentPoint);
-		if (currentBoard[y][x] == ' ')
+		if (currentBoard[x][y] == ' ')
 		{
 			if (!libertiesAvailable.contains(currentPoint))
 			{

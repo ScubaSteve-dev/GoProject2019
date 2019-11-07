@@ -16,7 +16,7 @@ public class Player
 		{
 			try
 			{
-				Thread.sleep(10); // Necessary so the thread will terminate without input
+				Thread.sleep(100); // Necessary so the thread will terminate without input
 			}
 			catch (Exception e)
 			{
