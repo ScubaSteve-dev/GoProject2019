@@ -40,7 +40,7 @@ public class Board
 		if (playerResigned)
 		{
 			System.out.println((blackPlayerTurn ? black.playerName : white.playerName) + " resigned");
-			return new double[] { 1.0, 0.0 };
+			return new double[] { blackPlayerTurn ? -1.0 : 0.0, !blackPlayerTurn ? -1.0 : 0.0 };
 		}
 		// TODO
 		double[] scores = new double[2];

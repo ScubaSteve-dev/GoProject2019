@@ -5,7 +5,6 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,7 +29,6 @@ public class GameBoardUI extends Application
 	public static boolean passClicked, resignClicked;
 	public static Point newMove;
 	private static Circle turnIndicator;
-	public Alert scoreAlert;
 	
 	@Override
 	public void start(Stage stage) throws Exception
