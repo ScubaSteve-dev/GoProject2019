@@ -1,5 +1,12 @@
 import java.util.Arrays;
 
+/**
+ * Author:Manjul Shrestha
+ * Created date: 11/01/2019
+ * Modified dates: 11/07/2019
+ * Class for scoring the game
+ * Create a new object of Scoring, get the value of scoreBlack and scoreWhite for the scores
+ */
 public class Scoring {
 
     public int scoreBlack = 0, scoreWhite = 0;
