@@ -3,7 +3,7 @@ public class Game
 {
 	public Player black, white;
 	public long TimeLimit;
-	public static boolean GameOver, BlackPlayerTurn, playerResigned;
+	public static boolean GameOver, BlackPlayerTurn = true, playerResigned;
 	public static int NumberPasses = 0;
 	public Board board;
 	public GameBoardUI BoardWindow;
@@ -17,27 +17,29 @@ public class Game
 				boolean validFound = false;
 				while (!validFound)
 				{
-					String choice = white.move();
+					String choice = black.move();
 					switch (choice)
 					{
 						case "Pass":
 							NumberPasses++;
+							validFound = true;
 							break;
 						case "Resign":
 							// System.out.println("Someone resigned");
 							GameOver = true;
+							validFound = true;
 							break;
 						default:
 							if (!board.validMove(Integer.parseInt(choice.substring(0, choice.indexOf(' '))),
-									Integer.parseInt(choice.substring(choice.indexOf(' ') + 1)), BlackPlayerTurn))
+									Integer.parseInt(choice.substring(choice.indexOf(' ') + 1)), true))
 							{
 								break;
 							}
 							board.makeMove(Integer.parseInt(choice.substring(0, choice.indexOf(' '))),
-									Integer.parseInt(choice.substring(choice.indexOf(' ') + 1)), false,
-									BlackPlayerTurn);
-							white.piecesLeft--;
+									Integer.parseInt(choice.substring(choice.indexOf(' ') + 1)), false, true);
+							black.piecesLeft--;
 							NumberPasses = 0;
+							validFound = true;
 					}
 					if (GameOver)
 					{
@@ -56,22 +58,24 @@ public class Game
 					{
 						case "Pass":
 							NumberPasses++;
+							validFound = true;
 							break;
 						case "Resign":
 							// System.out.println("Someone resigned");
 							GameOver = true;
+							validFound = true;
 							break;
 						default:
 							if (!board.validMove(Integer.parseInt(choice.substring(0, choice.indexOf(' '))),
-									Integer.parseInt(choice.substring(choice.indexOf(' ') + 1)), BlackPlayerTurn))
+									Integer.parseInt(choice.substring(choice.indexOf(' ') + 1)), false))
 							{
 								break;
 							}
 							board.makeMove(Integer.parseInt(choice.substring(0, choice.indexOf(' '))),
-									Integer.parseInt(choice.substring(choice.indexOf(' ') + 1)), false,
-									BlackPlayerTurn);
+									Integer.parseInt(choice.substring(choice.indexOf(' ') + 1)), false, false);
 							white.piecesLeft--;
 							NumberPasses = 0;
+							validFound = true;
 					}
 					if (GameOver)
 					{
@@ -81,6 +85,9 @@ public class Game
 				}
 			}
 			BlackPlayerTurn = !BlackPlayerTurn;
+			GameBoardUI.passClicked = false;
+			GameBoardUI.newMove = null;
+			GameBoardUI.resignClicked = false;
 			if (NumberPasses == 2)
 			{
 				GameOver = true;
