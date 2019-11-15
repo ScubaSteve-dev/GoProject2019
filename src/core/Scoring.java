@@ -1,11 +1,11 @@
-import java.util.Arrays;
+package core;
 
 /**
  * Author:Manjul Shrestha
  * Created date: 11/01/2019
  * Modified dates: 11/07/2019
  * Class for scoring the game
- * Create a new object of Scoring, get the value of scoreBlack and scoreWhite for the scores
+ * Create a new object of core.Scoring, get the value of scoreBlack and scoreWhite for the scores
  */
 public class Scoring {
 
@@ -83,18 +83,18 @@ public class Scoring {
 
     }
 
-   public static void main(String[] args) {
+ /*  public static void main(String[] args) {
 
         char[][] currentBoard = new char[19][19];
         for (char[] c : currentBoard) {
             Arrays.fill(c, ' ');
         }
-        Scoring scoring = new Scoring();
+        core.Scoring scoring = new core.Scoring();
         scoring.calculateScore(currentBoard);
         System.out.println("White:"+scoring.scoreWhite);
         System.out.println("Black:"+scoring.scoreBlack);
     }
-
+*/
     public int getScoreBlack() {
         return scoreBlack;
     }

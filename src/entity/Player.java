@@ -1,3 +1,7 @@
+package entity;
+
+import UI.GameBoardUI;
+import core.Game;
 
 public class Player
 {
@@ -6,7 +10,7 @@ public class Player
 	
 	public Player()
 	{
-		playerName = "Player";
+		playerName = "entity.Player";
 		piecesLeft = 181;
 	}
 	
