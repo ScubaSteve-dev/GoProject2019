@@ -3,10 +3,21 @@ package entity;
 import UI.GameBoardUI;
 import core.Game;
 
+/*
+Author:
+Modified By: Manjul Shrestha
+Change Log:
+1. Added username password and id to store in database(Manjul Shrestha)
+
+
+ */
 public class Player
 {
 	public String playerName;
 	public int piecesLeft;
+	public String password;
+	public String userName;
+	public int id;
 	
 	public Player()
 	{
@@ -47,5 +58,37 @@ public class Player
 			GameBoardUI.newMove = null;
 			return temp;
 		}
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPlayerName() {
+		return playerName;
+	}
+
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
