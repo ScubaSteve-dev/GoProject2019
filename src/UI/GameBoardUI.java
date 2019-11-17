@@ -1,7 +1,5 @@
 package UI;//Class implemented by John Comeaux
 
-import core.Game;
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
@@ -23,15 +21,16 @@ import java.awt.Point;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public class GameBoardUI extends Application
+import core.Game;
+
+public class GameBoardUI
 {
 	private static ArrayList<ImageView> intersects;
 	public static boolean passClicked, resignClicked;
 	public static Point newMove;
 	private static Circle turnIndicator;
 	
-	@Override
-	public void start(Stage stage) throws Exception
+	public void startGame(Stage stage) throws Exception
 	{
 		BorderPane mainPane = new BorderPane();
 		mainPane.setBackground(
@@ -84,8 +83,7 @@ public class GameBoardUI extends Application
 				try
 				{
 					Thread.sleep(seconds * 1000);
-				}
-				catch (Exception e)
+				} catch (Exception e)
 				{
 					
 				}
@@ -113,8 +111,7 @@ public class GameBoardUI extends Application
 		if (turnIndicator.getFill() == Color.WHITE)
 		{
 			turnIndicator.setFill(Color.BLACK);
-		}
-		else
+		} else
 		{
 			turnIndicator.setFill(Color.WHITE);
 		}
@@ -208,8 +205,7 @@ public class GameBoardUI extends Application
 										: piece == 'B' ? "Black"
 												: piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 								+ ".png");
-			}
-			else if (isRight)
+			} else if (isRight)
 			{
 				temp = GameBoardUI.class
 						.getResourceAsStream("images/Corner"
@@ -217,8 +213,7 @@ public class GameBoardUI extends Application
 										: piece == 'B' ? "Black"
 												: piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 								+ ".png");
-			}
-			else
+			} else
 			{
 				temp = GameBoardUI.class
 						.getResourceAsStream("images/Side"
@@ -228,8 +223,7 @@ public class GameBoardUI extends Application
 								+ ".png");
 				
 			}
-		}
-		else if (isBottom)
+		} else if (isBottom)
 		{
 			if (isLeft)
 			{
@@ -239,8 +233,7 @@ public class GameBoardUI extends Application
 										: piece == 'B' ? "Black"
 												: piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 								+ ".png");
-			}
-			else if (isRight)
+			} else if (isRight)
 			{
 				temp = GameBoardUI.class
 						.getResourceAsStream("images/Corner"
@@ -248,8 +241,7 @@ public class GameBoardUI extends Application
 										: piece == 'B' ? "Black"
 												: piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 								+ ".png");
-			}
-			else
+			} else
 			{
 				temp = GameBoardUI.class
 						.getResourceAsStream("images/Side"
@@ -258,8 +250,7 @@ public class GameBoardUI extends Application
 												: piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 								+ ".png");
 			}
-		}
-		else if (isLeft)
+		} else if (isLeft)
 		{
 			temp = GameBoardUI.class
 					.getResourceAsStream("images/Side"
@@ -267,8 +258,7 @@ public class GameBoardUI extends Application
 									: piece == 'B' ? "Black"
 											: piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 							+ ".png");
-		}
-		else if (isRight)
+		} else if (isRight)
 		{
 			temp = GameBoardUI.class
 					.getResourceAsStream("images/Side"
@@ -276,8 +266,7 @@ public class GameBoardUI extends Application
 									: piece == 'B' ? "Black"
 											: piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 							+ ".png");
-		}
-		else
+		} else
 		{
 			temp = GameBoardUI.class
 					.getResourceAsStream("images/Cross"
@@ -297,56 +286,43 @@ public class GameBoardUI extends Application
 			if (isLeft)
 			{
 				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Corner.png")));
-			}
-			else if (isRight)
+			} else if (isRight)
 			{
 				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Corner.png")));
 				temp.setRotate(90);
-			}
-			else
+			} else
 			{
 				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Side.png")));
 				
 			}
-		}
-		else if (isBottom)
+		} else if (isBottom)
 		{
 			if (isLeft)
 			{
 				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Corner.png")));
 				temp.setRotate(-90);
-			}
-			else if (isRight)
+			} else if (isRight)
 			{
 				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Corner.png")));
 				temp.setRotate(180);
-			}
-			else
+			} else
 			{
 				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Side.png")));
 				temp.setRotate(180);
 			}
-		}
-		else if (isLeft)
+		} else if (isLeft)
 		{
 			temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Side.png")));
 			temp.setRotate(-90);
-		}
-		else if (isRight)
+		} else if (isRight)
 		{
 			temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Side.png")));
 			temp.setRotate(90);
-		}
-		else
+		} else
 		{
 			temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Cross.png")));
 		}
 		return temp;
-	}
-	
-	public static void main(String[] args)
-	{
-		launch();
 	}
 	
 }
