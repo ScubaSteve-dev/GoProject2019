@@ -34,11 +34,14 @@ public class MainUI extends Application
 			{
 				if (p1 == null)
 				{
-					p1 = loginScreen.starting(stage);
+					p1 = new Player();
+					loginScreen.starting(stage, this, p1);
 				}
 				else
 				{
-					p2 = loginScreen.starting(stage);
+					p2 = new Player();
+					p2.piecesLeft--;
+					loginScreen.starting(stage, this, p2);
 				}
 				
 				if (p1 != null && p2 != null)
@@ -52,14 +55,14 @@ public class MainUI extends Application
 		});
 		register.setOnAction(e ->
 		{
-			registerScreen.starting(stage);
+			registerScreen.starting(stage, this);
 		});
 		viewStats.setOnAction(e ->
 		{
 			viewStatsScreen.starting(stage);
 		});
 		FlowPane fp = new FlowPane(login, register, viewStats);
-		stage.setScene(new Scene(fp, 400, 600));
+		stage.setScene(new Scene(fp, 600, 500));
 	}
 	
 	public static void main(String[] args)

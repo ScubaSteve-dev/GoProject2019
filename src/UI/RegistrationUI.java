@@ -19,7 +19,7 @@ import utils.DatabaseConnection;
 public class RegistrationUI
 {
 	
-	public void starting(Stage stage)
+	public void starting(Stage stage, MainUI mUI)
 	{
 		
 		TextField NameInput = new TextField();
@@ -72,6 +72,7 @@ public class RegistrationUI
 				newUser.setPassword(password);
 				DatabaseConnection connection = new DatabaseConnection();
 				connection.insertPlayer(newUser);
+				mUI.mainScreen(stage);
 			}
 			
 		});

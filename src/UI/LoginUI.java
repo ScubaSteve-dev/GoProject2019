@@ -16,9 +16,8 @@ import utils.DatabaseConnection;
 
 public class LoginUI
 {
-	private Player targetPlayer;
 	
-	public Player starting(Stage stage) throws InterruptedException
+	public void starting(Stage stage, MainUI mUI, Player targetPlayer) throws InterruptedException
 	{
 		TextField NameInput = new TextField();
 		TextField PassWordInput = new TextField();
@@ -56,18 +55,18 @@ public class LoginUI
 						String listPassword = player.password;
 						if (listName.equals(name) && listPassword.equals(password))
 						{ // compare username and password
-							targetPlayer = player;
+							targetPlayer.playerName = player.playerName;
+							mUI.mainScreen(stage);
 							break;
+						}
+						else
+						{
+							System.out.println("does not match " + listName);
 						}
 					}
 				}
 			}.start();
 		});
-		while (targetPlayer == null)
-		{
-			Thread.sleep(100);
-		}
-		return targetPlayer;
 	}
 	
 }
