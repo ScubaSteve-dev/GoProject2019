@@ -199,6 +199,8 @@ public class Board
 		// put those array list into an array so that we can return two array list from
 		// our method call
 		ArrayList<ArrayList<Point>> stacked = new ArrayList<>();
+		stacked.add(new ArrayList<Point>());
+		stacked.add(new ArrayList<Point>());
 		stacked.set(0, feedHasLiberties);
 		stacked.set(1, feedHasLibertiesTraversed);
 		stacked = hasLibertiesHelper(x, y, check, feedHasLiberties, feedHasLibertiesTraversed, hasLibertiesBoard);
@@ -214,6 +216,8 @@ public class Board
 	{
 		Point currentPoint = new Point(x, y);
 		ArrayList<ArrayList<Point>> stackedHelper = new ArrayList<>();
+		stackedHelper.add(new ArrayList<>());
+		stackedHelper.add(new ArrayList<>());
 		traversedPoints.add(currentPoint);
 		if (hasLibertiesHelperBoard[x][y] == ' ')
 		{

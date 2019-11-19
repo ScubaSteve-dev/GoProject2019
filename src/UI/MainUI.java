@@ -16,8 +16,18 @@ public class MainUI extends Application
 	@Override
 	public void start(Stage stage) throws Exception
 	{
-		gameStarter.startGame(stage);
+		mainScreen(stage);
 		stage.show();
+		if (p1 != null && p2 != null)
+		{
+			gameStarter.startGame(stage);
+		}
+		
+	}
+	
+	public void mainScreen(Stage stage)
+	{
+		
 	}
 	
 	public static void main(String[] args)
