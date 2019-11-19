@@ -18,10 +18,8 @@ public class LoginUI
 {
 	private Player targetPlayer;
 	
-	public Player starting() throws InterruptedException
+	public Player starting(Stage stage) throws InterruptedException
 	{
-		
-		Stage stage2 = new Stage();
 		TextField NameInput = new TextField();
 		TextField PassWordInput = new TextField();
 		Label NameLabel = new Label("UserName:");
@@ -38,7 +36,7 @@ public class LoginUI
 		LoginPane.add(LoginButton, 4, 4);
 		Scene scene = new Scene(LoginPane, 400, 300);
 		
-		stage2.setScene(scene);
+		stage.setScene(scene);
 		
 		LoginButton.setOnAction(e ->
 		{
@@ -59,7 +57,6 @@ public class LoginUI
 						if (listName.equals(name) && listPassword.equals(password))
 						{ // compare username and password
 							targetPlayer = player;
-							stage2.close();
 							break;
 						}
 					}

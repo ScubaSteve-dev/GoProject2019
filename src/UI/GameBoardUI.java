@@ -22,6 +22,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import core.Game;
+import entity.Player;
 
 public class GameBoardUI
 {
@@ -29,9 +30,12 @@ public class GameBoardUI
 	public static boolean passClicked, resignClicked;
 	public static Point newMove;
 	private static Circle turnIndicator;
+	private static Player p1, p2;
 	
-	public void startGame(Stage stage) throws Exception
+	public void startGame(Stage stage, Player o, Player t) throws Exception
 	{
+		p1 = o;
+		p2 = t;
 		BorderPane mainPane = new BorderPane();
 		mainPane.setBackground(
 				new Background(new BackgroundFill(Color.rgb(25, 255, 56), CornerRadii.EMPTY, Insets.EMPTY)));
@@ -83,7 +87,8 @@ public class GameBoardUI
 				try
 				{
 					Thread.sleep(seconds * 1000);
-				} catch (Exception e)
+				}
+				catch (Exception e)
 				{
 					
 				}
@@ -111,7 +116,8 @@ public class GameBoardUI
 		if (turnIndicator.getFill() == Color.WHITE)
 		{
 			turnIndicator.setFill(Color.BLACK);
-		} else
+		}
+		else
 		{
 			turnIndicator.setFill(Color.WHITE);
 		}
@@ -160,7 +166,7 @@ public class GameBoardUI
 	{
 		{
 			Circle blackPiecesCircle = new Circle(30, Color.BLACK);
-			Text blackPlayerName = new Text("P1 Name"), blackPlayerPieces = new Text("181");
+			Text blackPlayerName = new Text(p1.playerName), blackPlayerPieces = new Text("181");
 			
 			blackPlayerName.setLayoutX(555);
 			blackPlayerName.setLayoutY(55);
@@ -175,7 +181,7 @@ public class GameBoardUI
 			mainPane.getChildren().addAll(blackPiecesCircle, blackPlayerName, blackPlayerPieces);
 			
 			Circle whitePiecesCircle = new Circle(30, Color.WHITE);
-			Text whitePlayerName = new Text("P2 Name"), whitePlayerPieces = new Text("180");
+			Text whitePlayerName = new Text(p2.playerName), whitePlayerPieces = new Text("180");
 			
 			whitePlayerName.setLayoutX(725);
 			whitePlayerName.setLayoutY(55);
@@ -205,7 +211,8 @@ public class GameBoardUI
 										: piece == 'B' ? "Black"
 												: piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 								+ ".png");
-			} else if (isRight)
+			}
+			else if (isRight)
 			{
 				temp = GameBoardUI.class
 						.getResourceAsStream("images/Corner"
@@ -213,7 +220,8 @@ public class GameBoardUI
 										: piece == 'B' ? "Black"
 												: piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 								+ ".png");
-			} else
+			}
+			else
 			{
 				temp = GameBoardUI.class
 						.getResourceAsStream("images/Side"
@@ -223,7 +231,8 @@ public class GameBoardUI
 								+ ".png");
 				
 			}
-		} else if (isBottom)
+		}
+		else if (isBottom)
 		{
 			if (isLeft)
 			{
@@ -233,7 +242,8 @@ public class GameBoardUI
 										: piece == 'B' ? "Black"
 												: piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 								+ ".png");
-			} else if (isRight)
+			}
+			else if (isRight)
 			{
 				temp = GameBoardUI.class
 						.getResourceAsStream("images/Corner"
@@ -241,7 +251,8 @@ public class GameBoardUI
 										: piece == 'B' ? "Black"
 												: piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 								+ ".png");
-			} else
+			}
+			else
 			{
 				temp = GameBoardUI.class
 						.getResourceAsStream("images/Side"
@@ -250,7 +261,8 @@ public class GameBoardUI
 												: piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 								+ ".png");
 			}
-		} else if (isLeft)
+		}
+		else if (isLeft)
 		{
 			temp = GameBoardUI.class
 					.getResourceAsStream("images/Side"
@@ -258,7 +270,8 @@ public class GameBoardUI
 									: piece == 'B' ? "Black"
 											: piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 							+ ".png");
-		} else if (isRight)
+		}
+		else if (isRight)
 		{
 			temp = GameBoardUI.class
 					.getResourceAsStream("images/Side"
@@ -266,7 +279,8 @@ public class GameBoardUI
 									: piece == 'B' ? "Black"
 											: piece == 'b' ? "BlackGrey" : piece == 'W' ? "White" : "WhiteGrey")
 							+ ".png");
-		} else
+		}
+		else
 		{
 			temp = GameBoardUI.class
 					.getResourceAsStream("images/Cross"
@@ -286,39 +300,47 @@ public class GameBoardUI
 			if (isLeft)
 			{
 				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Corner.png")));
-			} else if (isRight)
+			}
+			else if (isRight)
 			{
 				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Corner.png")));
 				temp.setRotate(90);
-			} else
+			}
+			else
 			{
 				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Side.png")));
 				
 			}
-		} else if (isBottom)
+		}
+		else if (isBottom)
 		{
 			if (isLeft)
 			{
 				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Corner.png")));
 				temp.setRotate(-90);
-			} else if (isRight)
+			}
+			else if (isRight)
 			{
 				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Corner.png")));
 				temp.setRotate(180);
-			} else
+			}
+			else
 			{
 				temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Side.png")));
 				temp.setRotate(180);
 			}
-		} else if (isLeft)
+		}
+		else if (isLeft)
 		{
 			temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Side.png")));
 			temp.setRotate(-90);
-		} else if (isRight)
+		}
+		else if (isRight)
 		{
 			temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Side.png")));
 			temp.setRotate(90);
-		} else
+		}
+		else
 		{
 			temp = new ImageView(new Image(GameBoardUI.class.getResourceAsStream("images/Cross.png")));
 		}

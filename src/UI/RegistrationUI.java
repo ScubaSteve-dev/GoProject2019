@@ -19,7 +19,7 @@ import utils.DatabaseConnection;
 public class RegistrationUI
 {
 	
-	public void starting()
+	public void starting(Stage stage)
 	{
 		
 		TextField NameInput = new TextField();
@@ -41,10 +41,7 @@ public class RegistrationUI
 		LoginPane.add(ConfirmPassWordInput, 2, 3);
 		LoginPane.add(RegisterButton, 4, 4);
 		Scene scene = new Scene(LoginPane, 400, 300);
-		Stage stage2 = new Stage();
-		stage2.setScene(scene);
-		stage2.show();
-		
+		stage.setScene(scene);
 		RegisterButton.setOnAction(e ->
 		{
 			Player newUser = new Player();
@@ -75,7 +72,6 @@ public class RegistrationUI
 				newUser.setPassword(password);
 				DatabaseConnection connection = new DatabaseConnection();
 				connection.insertPlayer(newUser);
-				stage2.close();
 			}
 			
 		});

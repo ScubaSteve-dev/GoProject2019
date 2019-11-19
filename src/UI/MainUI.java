@@ -1,6 +1,9 @@
 package UI;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 import entity.Player;
@@ -10,7 +13,7 @@ public class MainUI extends Application
 	private GameBoardUI gameStarter = new GameBoardUI();
 	private LoginUI loginScreen = new LoginUI();
 	private RegistrationUI registerScreen = new RegistrationUI();
-	private ViewStatsUI viewStats = new ViewStatsUI();
+	private ViewStatsUI viewStatsScreen = new ViewStatsUI();
 	private Player p1, p2;
 	
 	@Override
@@ -18,16 +21,45 @@ public class MainUI extends Application
 	{
 		mainScreen(stage);
 		stage.show();
-		if (p1 != null && p2 != null)
-		{
-			gameStarter.startGame(stage);
-		}
-		
 	}
 	
 	public void mainScreen(Stage stage)
 	{
-		
+		Button login = new Button("Login");
+		Button register = new Button("Register");
+		Button viewStats = new Button("View Statistics");
+		login.setOnAction(e ->
+		{
+			try
+			{
+				if (p1 == null)
+				{
+					p1 = loginScreen.starting(stage);
+				}
+				else
+				{
+					p2 = loginScreen.starting(stage);
+				}
+				
+				if (p1 != null && p2 != null)
+				{
+					gameStarter.startGame(stage, p1, p2);
+				}
+			}
+			catch (Exception e1)
+			{
+			}
+		});
+		register.setOnAction(e ->
+		{
+			registerScreen.starting(stage);
+		});
+		viewStats.setOnAction(e ->
+		{
+			viewStatsScreen.starting(stage);
+		});
+		FlowPane fp = new FlowPane(login, register, viewStats);
+		stage.setScene(new Scene(fp, 400, 600));
 	}
 	
 	public static void main(String[] args)

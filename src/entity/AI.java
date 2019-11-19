@@ -1,6 +1,4 @@
-package core;
-
-import entity.Player;
+package entity;
 
 //core.AI is always going to be the black pieces
 public class AI extends Player

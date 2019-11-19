@@ -1,6 +1,7 @@
 package core;
 
 import UI.GameBoardUI;
+import entity.AI;
 import entity.Player;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
