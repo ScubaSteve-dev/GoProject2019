@@ -68,6 +68,7 @@ public class RegistrationUI
 			}
 			if (checkpoint)
 			{
+				System.out.println("here");
 				newUser.setUserName(name);
 				newUser.setPassword(password);
 				DatabaseConnection connection = new DatabaseConnection();

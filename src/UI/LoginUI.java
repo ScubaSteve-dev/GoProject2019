@@ -49,6 +49,8 @@ public class LoginUI
 					DatabaseConnection db = new DatabaseConnection();
 					
 					List<Player> players = db.getPlayers();
+					System.out.println(players);
+					System.out.println(name + " " + password);
 					for (Player player : players)
 					{ // check list for input name
 						String listName = player.playerName;
@@ -58,10 +60,9 @@ public class LoginUI
 							targetPlayer.playerName = player.playerName;
 							mUI.mainScreen(stage);
 							break;
-						}
-						else
+						} else
 						{
-							System.out.println("does not match " + listName);
+							// System.out.println("does not match " + listName);
 						}
 					}
 				}
