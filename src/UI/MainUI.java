@@ -59,7 +59,7 @@ public class MainUI extends Application
 		});
 		viewStats.setOnAction(e ->
 		{
-			viewStatsScreen.starting(stage);
+			viewStatsScreen.start(stage);
 		});
 		FlowPane fp = new FlowPane(login, register, viewStats);
 		stage.setScene(new Scene(fp, 600, 500));

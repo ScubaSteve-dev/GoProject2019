@@ -34,8 +34,8 @@ public class ViewStatsUI extends Application
 
       table.setEditable(true);
 
-      TableColumn blank = new TableColumn("  ");
-      TableColumn userName = new TableColumn("Name");
+      TableColumn blank = new TableColumn("   ");
+      TableColumn userName = new TableColumn("Players");
       TableColumn userWin = new TableColumn("Winner");
       TableColumn userLoss = new TableColumn("Loser");
       
