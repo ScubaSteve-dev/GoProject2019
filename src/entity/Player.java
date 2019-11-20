@@ -24,6 +24,10 @@ public class Player
 		playerName = "entity.Player";
 		piecesLeft = 181;
 	}
+
+	public Player(int id){
+		this.id=id;
+	}
 	
 	public String move()
 	{
