@@ -6,6 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Beyjo/git/GoProject2019/derby.jar"/>
+	<classpathentry kind="lib" path="derby.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
