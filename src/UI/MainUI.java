@@ -34,35 +34,33 @@ public class MainUI extends Application
 			{
 				if (p1 == null)
 				{
-					p1 = new Player();
-					loginScreen.starting(stage, this, p1);
-				}
-				else
+					System.out.println("p1");
+					p1 = loginScreen.starting();
+				} else
 				{
-					p2 = new Player();
-					p2.piecesLeft--;
-					loginScreen.starting(stage, this, p2);
+					System.out.println("p2");
+					p2 = loginScreen.starting();
 				}
+				System.out.println(p1 + " " + p2);
 				
 				if (p1 != null && p2 != null)
 				{
 					gameStarter.startGame(stage, p1, p2);
 				}
-			}
-			catch (Exception e1)
+			} catch (Exception e1)
 			{
 			}
 		});
 		register.setOnAction(e ->
 		{
-			registerScreen.starting(stage, this);
+			registerScreen.starting();
 		});
 		viewStats.setOnAction(e ->
 		{
 			viewStatsScreen.starting(stage);
 		});
 		FlowPane fp = new FlowPane(login, register, viewStats);
-		stage.setScene(new Scene(fp, 600, 500));
+		stage.setScene(new Scene(fp, 400, 600));
 	}
 	
 	public static void main(String[] args)

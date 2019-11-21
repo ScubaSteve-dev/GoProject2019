@@ -1,9 +1,12 @@
 
 package UI;
 
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -16,9 +19,12 @@ import utils.DatabaseConnection;
 
 public class LoginUI
 {
+	private Player targetPlayer;
 	
-	public void starting(Stage stage, MainUI mUI, Player targetPlayer) throws InterruptedException
+	public Player starting() throws InterruptedException
 	{
+		
+		Stage stage2 = new Stage();
 		TextField NameInput = new TextField();
 		TextField PassWordInput = new TextField();
 		Label NameLabel = new Label("UserName:");
@@ -35,39 +41,56 @@ public class LoginUI
 		LoginPane.add(LoginButton, 4, 4);
 		Scene scene = new Scene(LoginPane, 400, 300);
 		
-		stage.setScene(scene);
+		stage2.setScene(scene);
+		stage2.show();
 		
+		System.out.println("login");
 		LoginButton.setOnAction(e ->
 		{
-			new Thread()
+			// new Thread()
+			// {
+			boolean correct = false;
+			// @Override
+			// public void run()
 			{
-				@Override
-				public void run()
-				{
-					String name = NameInput.getText();
-					String password = PassWordInput.getText();
-					DatabaseConnection db = new DatabaseConnection();
-					
-					List<Player> players = db.getPlayers();
-					System.out.println(players);
-					System.out.println(name + " " + password);
-					for (Player player : players)
-					{ // check list for input name
-						String listName = player.playerName;
-						String listPassword = player.password;
-						if (listName.equals(name) && listPassword.equals(password))
-						{ // compare username and password
-							targetPlayer.playerName = player.playerName;
-							mUI.mainScreen(stage);
-							break;
-						} else
-						{
-							// System.out.println("does not match " + listName);
-						}
+				String name = NameInput.getText();
+				String password = PassWordInput.getText();
+				DatabaseConnection db = new DatabaseConnection();
+				// db.stopConnection();
+				
+				List<Player> players = db.getPlayers();
+				for (Player player : players)
+				{ // check list for input name
+					String listName = player.playerName;
+					String listPassword = player.password;
+					if (listName.equals(name) && listPassword.equals(password))
+					{ // compare username and password
+						targetPlayer = player;
+						stage2.close();
+						System.out.println("Logged In");
+						correct = true;
+						break;
 					}
 				}
-			}.start();
+				if (correct == false)
+				{
+					Platform.runLater(() ->
+					{
+						Alert scoreAlert = new Alert(Alert.AlertType.INFORMATION, "Incorrect Username or Password",
+								ButtonType.CANCEL);
+						scoreAlert.showAndWait();
+					});
+				}
+			}
 		});
+		// }.start();
+		// });
+		/*
+		 * while (targetPlayer == null) { Thread.sleep(100); }
+		 */
+		
+		return targetPlayer;
+		
 	}
 	
 }
