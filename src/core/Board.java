@@ -10,6 +10,7 @@ import entity.Player;
 public class Board
 {
 	public static char[][] currentBoard;
+	public static char[][] scoringBoard;
 	public static ArrayList<char[][]> pastBoards;
 	public static GameBoardUI boardWindow;
 	public static Player black, white;
@@ -45,9 +46,9 @@ public class Board
 			System.out.println((blackPlayerTurn ? black.playerName : white.playerName) + " resigned");
 			return new double[] { blackPlayerTurn ? -1.0 : 0.0, !blackPlayerTurn ? -1.0 : 0.0 };
 		}
-		// TODO
+		scoringBoard();
 		double[] scores = new double[2];
-		for (char t[] : currentBoard)
+		for (char t[] : scoringBoard)
 		{
 			for (char h : t)
 			{
@@ -62,7 +63,76 @@ public class Board
 		}
 		return scores;
 	}
-	
+	public void scoringBoard() {
+		scoringBoard = cloneArray(currentBoard);
+		ArrayList<Point> blackList = new ArrayList<Point>();
+		ArrayList<Point> whiteList = new ArrayList<Point>();
+		char B = 'B';
+		char W = 'W';
+		for(int x =0;x<19;x++) {
+			for(int y=0;y<19;y++) {
+				if(blackList.contains(new Point(x,y))) {
+					continue;
+				}
+				//check originates from pieces
+				if(scoringBoard[x][y] == B) {
+					blackList= scoringHelper(x,y, B, scoringBoard, blackList);
+				}
+			}
+			
+		}
+		for(int x =0;x<19;x++) {
+			for(int y=0;y<19;y++) {
+				if(whiteList.contains(new Point(x,y))) {
+					continue;
+				}
+				//check originates from pieces
+				if(scoringBoard[x][y] == B) {
+					whiteList= scoringHelper(x,y, B, scoringBoard, whiteList);
+				}
+			}
+			
+		}
+		ArrayList<Point> whiteListTemp = (ArrayList<Point>) whiteList.clone();
+		whiteList.removeAll(blackList);
+		blackList.removeAll(whiteListTemp);
+		for(char[] q: scoringBoard) {
+			for(char r: q) {
+				r = ' ';
+			}
+		}
+		for(Point e: blackList) {
+			scoringBoard[e.x][e.y]= 'B';
+		}
+		for(Point e: whiteListTemp) {
+			scoringBoard[e.x][e.y]= 'W';
+		}
+	}
+	public ArrayList<Point> scoringHelper(int x, int y,char chIn, char[][] board, ArrayList<Point> traversedPoints) {
+		Point currentPoint = new Point(x,y);
+		if(board[x][y] == chIn||board[x][y]==' ') {
+			if(!traversedPoints.contains(currentPoint)) {
+				traversedPoints.add(currentPoint);
+				int check = up(y,x,chIn, board, traversedPoints);
+				if(check!=-1) {
+					traversedPoints = scoringHelper(x,check,chIn,board,traversedPoints);
+				}
+				check = down(y,x,chIn, board, traversedPoints);
+				if(check!=-1) {
+					traversedPoints = scoringHelper(x,check,chIn,board,traversedPoints);
+				}
+				check = right(y,x,chIn, board, traversedPoints);
+				if(check!=-1) {
+					traversedPoints = scoringHelper(check,y,chIn,board,traversedPoints);
+				}
+				check = left(y,x,chIn, board, traversedPoints);
+				if(check!=-1) {
+					traversedPoints = scoringHelper(check,y,chIn,board,traversedPoints);
+				}
+			}
+		}
+		return traversedPoints;
+	}
 	// Zack stuff. Shhhhhhhhhhhhhhhhh it's okay john, shhhhhhhhhhhhhhhh. don't look
 	// at it.
 	// If row is on edge return -1 if requesting liberty not on board or has been
