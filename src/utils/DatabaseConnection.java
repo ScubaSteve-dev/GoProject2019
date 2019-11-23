@@ -45,7 +45,7 @@ public class DatabaseConnection {
         }*/
        /* Player validatePlayer = connection.validatePlayer(player);
         System.out.println(validatePlayer.getPlayerName());*/
-        GameScore score = new GameScore();
+        /*GameScore score = new GameScore();
         Player player1 = new Player();
         player1.setId(101);
         Player player2 = new Player();
@@ -57,12 +57,12 @@ public class DatabaseConnection {
         connection.insertGameScore(score);
         for (GameScore score1 : connection.getGameScore()) {
             System.out.println(score1.getWinningPlayer().getPlayerName());
-        }
+        }*/
     }
 
     public DatabaseConnection() {
         // dropTables();
-        //createTables();
+       // createTables();
     }
 
     /*
@@ -79,7 +79,7 @@ public class DatabaseConnection {
         try {
             conn = initiateConnection();
             stmt = conn.createStatement();
-            //  stmt.execute(createSQL);
+            stmt.execute(createSQL);
             stmt.execute(createSQLScore);
             conn.commit();
         } catch (SQLException ex) {
@@ -272,7 +272,7 @@ public class DatabaseConnection {
             conn = initiateConnection();
             stmt = conn.createStatement();
             stmt.execute("drop table game_score");
-
+            stmt.execute("drop table player");
             conn.commit();
         } catch (SQLException e) {
             e.printStackTrace();
