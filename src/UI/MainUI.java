@@ -1,6 +1,8 @@
 package UI;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
@@ -36,7 +38,8 @@ public class MainUI extends Application
 				{
 					System.out.println("p1");
 					p1 = loginScreen.starting();
-				} else
+				}
+				else
 				{
 					System.out.println("p2");
 					p2 = loginScreen.starting();
@@ -47,7 +50,8 @@ public class MainUI extends Application
 				{
 					gameStarter.startGame(stage, p1, p2);
 				}
-			} catch (Exception e1)
+			}
+			catch (Exception e1)
 			{
 			}
 		});
@@ -59,8 +63,9 @@ public class MainUI extends Application
 		{
 			viewStatsScreen.start(stage);
 		});
-		FlowPane fp = new FlowPane(login, register, viewStats);
-		stage.setScene(new Scene(fp, 400, 600));
+		FlowPane fp = new FlowPane(Orientation.VERTICAL, login, register, viewStats);
+		fp.setPadding(new Insets(50));
+		stage.setScene(new Scene(fp, 600, 400));
 	}
 	
 	public static void main(String[] args)

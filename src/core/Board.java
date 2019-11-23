@@ -55,7 +55,8 @@ public class Board
 				if (h == 'B')
 				{
 					scores[0] += 1;
-				} else if (h == 'W')
+				}
+				else if (h == 'W')
 				{
 					scores[1] += 1;
 				}
@@ -63,32 +64,42 @@ public class Board
 		}
 		return scores;
 	}
-	public void scoringBoard() {
+	
+	public void scoringBoard()
+	{
 		scoringBoard = cloneArray(currentBoard);
 		ArrayList<Point> blackList = new ArrayList<Point>();
 		ArrayList<Point> whiteList = new ArrayList<Point>();
 		char B = 'B';
 		char W = 'W';
-		for(int x =0;x<19;x++) {
-			for(int y=0;y<19;y++) {
-				if(blackList.contains(new Point(x,y))) {
+		for (int x = 0; x < 19; x++)
+		{
+			for (int y = 0; y < 19; y++)
+			{
+				if (blackList.contains(new Point(x, y)))
+				{
 					continue;
 				}
-				//check originates from pieces
-				if(scoringBoard[x][y] == B) {
-					blackList= scoringHelper(x,y, B, scoringBoard, blackList);
+				// check originates from pieces
+				if (scoringBoard[x][y] == B)
+				{
+					blackList = scoringHelper(x, y, B, scoringBoard, blackList);
 				}
 			}
 			
 		}
-		for(int x =0;x<19;x++) {
-			for(int y=0;y<19;y++) {
-				if(whiteList.contains(new Point(x,y))) {
+		for (int x = 0; x < 19; x++)
+		{
+			for (int y = 0; y < 19; y++)
+			{
+				if (whiteList.contains(new Point(x, y)))
+				{
 					continue;
 				}
-				//check originates from pieces
-				if(scoringBoard[x][y] == B) {
-					whiteList= scoringHelper(x,y, B, scoringBoard, whiteList);
+				// check originates from pieces
+				if (scoringBoard[x][y] == B)
+				{
+					whiteList = scoringHelper(x, y, B, scoringBoard, whiteList);
 				}
 			}
 			
@@ -96,43 +107,56 @@ public class Board
 		ArrayList<Point> whiteListTemp = (ArrayList<Point>) whiteList.clone();
 		whiteList.removeAll(blackList);
 		blackList.removeAll(whiteListTemp);
-		for(char[] q: scoringBoard) {
-			for(char r: q) {
+		for (char[] q : scoringBoard)
+		{
+			for (char r : q)
+			{
 				r = ' ';
 			}
 		}
-		for(Point e: blackList) {
-			scoringBoard[e.x][e.y]= 'B';
+		for (Point e : blackList)
+		{
+			scoringBoard[e.x][e.y] = 'B';
 		}
-		for(Point e: whiteListTemp) {
-			scoringBoard[e.x][e.y]= 'W';
+		for (Point e : whiteListTemp)
+		{
+			scoringBoard[e.x][e.y] = 'W';
 		}
 	}
-	public ArrayList<Point> scoringHelper(int x, int y,char chIn, char[][] board, ArrayList<Point> traversedPoints) {
-		Point currentPoint = new Point(x,y);
-		if(board[x][y] == chIn||board[x][y]==' ') {
-			if(!traversedPoints.contains(currentPoint)) {
+	
+	public ArrayList<Point> scoringHelper(int x, int y, char chIn, char[][] board, ArrayList<Point> traversedPoints)
+	{
+		Point currentPoint = new Point(x, y);
+		if (board[x][y] == chIn || board[x][y] == ' ')
+		{
+			if (!traversedPoints.contains(currentPoint))
+			{
 				traversedPoints.add(currentPoint);
-				int check = up(y,x,chIn, board, traversedPoints);
-				if(check!=-1) {
-					traversedPoints = scoringHelper(x,check,chIn,board,traversedPoints);
+				int check = up(y, x, chIn, board, traversedPoints);
+				if (check != -1)
+				{
+					traversedPoints = scoringHelper(x, check, chIn, board, traversedPoints);
 				}
-				check = down(y,x,chIn, board, traversedPoints);
-				if(check!=-1) {
-					traversedPoints = scoringHelper(x,check,chIn,board,traversedPoints);
+				check = down(y, x, chIn, board, traversedPoints);
+				if (check != -1)
+				{
+					traversedPoints = scoringHelper(x, check, chIn, board, traversedPoints);
 				}
-				check = right(y,x,chIn, board, traversedPoints);
-				if(check!=-1) {
-					traversedPoints = scoringHelper(check,y,chIn,board,traversedPoints);
+				check = right(y, x, chIn, board, traversedPoints);
+				if (check != -1)
+				{
+					traversedPoints = scoringHelper(check, y, chIn, board, traversedPoints);
 				}
-				check = left(y,x,chIn, board, traversedPoints);
-				if(check!=-1) {
-					traversedPoints = scoringHelper(check,y,chIn,board,traversedPoints);
+				check = left(y, x, chIn, board, traversedPoints);
+				if (check != -1)
+				{
+					traversedPoints = scoringHelper(check, y, chIn, board, traversedPoints);
 				}
 			}
 		}
 		return traversedPoints;
 	}
+	
 	// Zack stuff. Shhhhhhhhhhhhhhhhh it's okay john, shhhhhhhhhhhhhhhh. don't look
 	// at it.
 	// If row is on edge return -1 if requesting liberty not on board or has been
@@ -254,7 +278,8 @@ public class Board
 		if (test == null)
 		{
 			return true;
-		} else
+		}
+		else
 		{
 			System.out.println(test.toString());
 			return false;
@@ -295,7 +320,8 @@ public class Board
 			{
 				hasLibertiesHelperlibertiesAvailable.add(currentPoint);
 			}
-		} else
+		}
+		else
 		{
 			int right = right(y, x, check, hasLibertiesHelperBoard, traversedPoints);
 			
@@ -348,10 +374,12 @@ public class Board
 		if (row == 0 || traversedPoints.contains(new Point(column, row - 1)))
 		{
 			return -1;
-		} else if (upBoard[column][row - 1] != ' ' && upBoard[column][row - 1] != check)
+		}
+		else if (upBoard[column][row - 1] != ' ' && upBoard[column][row - 1] != check)
 		{
 			return -1;
-		} else
+		}
+		else
 		{
 			return row - 1;
 		}
@@ -363,10 +391,12 @@ public class Board
 		if (row == 18 || traversedPoints.contains(new Point(column, row + 1)))
 		{
 			return -1;
-		} else if (downBoard[column][row + 1] != ' ' && downBoard[column][row + 1] != check)
+		}
+		else if (downBoard[column][row + 1] != ' ' && downBoard[column][row + 1] != check)
 		{
 			return -1;
-		} else
+		}
+		else
 		{
 			return row + 1;
 		}
@@ -378,7 +408,8 @@ public class Board
 		if (column == 18 || traversedPoints.contains(new Point(column + 1, row)))
 		{
 			return -1;
-		} else if (rightBoard[column + 1][row] != ' ' && rightBoard[column + 1][row] != check)
+		}
+		else if (rightBoard[column + 1][row] != ' ' && rightBoard[column + 1][row] != check)
 		{
 			return -1;
 		}
@@ -391,7 +422,8 @@ public class Board
 		if (column == 0 || traversedPoints.contains(new Point(column - 1, row)))
 		{
 			return -1;
-		} else if (leftBoard[column - 1][row] != ' ' && leftBoard[column - 1][row] != check)
+		}
+		else if (leftBoard[column - 1][row] != ' ' && leftBoard[column - 1][row] != check)
 		{
 			return -1;
 		}

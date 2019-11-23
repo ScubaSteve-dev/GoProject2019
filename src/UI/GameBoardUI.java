@@ -31,6 +31,7 @@ public class GameBoardUI
 	public static Point newMove;
 	private static Circle turnIndicator;
 	private static Player p1, p2;
+	private static Text blackPlayerPieces, whitePlayerPieces;
 	
 	public void startGame(Stage stage, Player o, Player t) throws Exception
 	{
@@ -105,14 +106,15 @@ public class GameBoardUI
 		});
 		stage.setScene(new Scene(mainPane, 850, 550));
 		stage.setResizable(false);
-		stage.setTitle("GO core.Game in Progress");
+		stage.setTitle("GO Game in Progress");
 		stage.show();
 		gameThread.start();
 	}
 	
 	public void updateBoard(char[][] b)
 	{
-		
+		blackPlayerPieces.setText(Integer.toString(p1.piecesLeft));
+		whitePlayerPieces.setText(Integer.toString(p2.piecesLeft));
 		if (turnIndicator.getFill() == Color.WHITE)
 		{
 			turnIndicator.setFill(Color.BLACK);
@@ -166,7 +168,8 @@ public class GameBoardUI
 	{
 		{
 			Circle blackPiecesCircle = new Circle(30, Color.BLACK);
-			Text blackPlayerName = new Text(p1.playerName), blackPlayerPieces = new Text("181");
+			Text blackPlayerName = new Text(p1.playerName);
+			blackPlayerPieces = new Text("181");
 			
 			blackPlayerName.setLayoutX(555);
 			blackPlayerName.setLayoutY(55);
@@ -181,7 +184,8 @@ public class GameBoardUI
 			mainPane.getChildren().addAll(blackPiecesCircle, blackPlayerName, blackPlayerPieces);
 			
 			Circle whitePiecesCircle = new Circle(30, Color.WHITE);
-			Text whitePlayerName = new Text(p2.playerName), whitePlayerPieces = new Text("180");
+			Text whitePlayerName = new Text(p2.playerName);
+			whitePlayerPieces = new Text("180");
 			
 			whitePlayerName.setLayoutX(725);
 			whitePlayerName.setLayoutY(55);
