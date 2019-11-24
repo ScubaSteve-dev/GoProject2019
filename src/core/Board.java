@@ -97,9 +97,9 @@ public class Board
 					continue;
 				}
 				// check originates from pieces
-				if (scoringBoard[x][y] == B)
+				if (scoringBoard[x][y] == W)
 				{
-					whiteList = scoringHelper(x, y, B, scoringBoard, whiteList);
+					whiteList = scoringHelper(x, y, W, scoringBoard, whiteList);
 				}
 			}
 			
@@ -118,7 +118,7 @@ public class Board
 		{
 			scoringBoard[e.x][e.y] = 'B';
 		}
-		for (Point e : whiteListTemp)
+		for (Point e : whiteList)
 		{
 			scoringBoard[e.x][e.y] = 'W';
 		}

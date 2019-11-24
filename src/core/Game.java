@@ -111,11 +111,11 @@ public class Game
 		});
 	}
 	
-	public Game(GameBoardUI B)
+	public Game(GameBoardUI B, Player p1, Player p2)
 	{
 		BoardWindow = B;
-		black = new Player();
-		white = new AI();
+		black = p1;
+		white = p2;
 		board = new Board(B, black, white);
 		
 	}

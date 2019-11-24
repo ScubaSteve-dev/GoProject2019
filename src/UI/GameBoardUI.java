@@ -68,7 +68,7 @@ public class GameBoardUI
 		buttons.setHgap(80);
 		mainPane.getChildren().add(buttons);
 		
-		Game g = new Game(this);
+		Game g = new Game(this, p1, p2);
 		Thread gameThread = new Thread()
 		{
 			@Override
@@ -95,6 +95,7 @@ public class GameBoardUI
 				}
 				Game.NumberPasses = 1;
 				passClicked = true;
+				Game.GameOver = true;
 			}
 		};
 		timer.start();
